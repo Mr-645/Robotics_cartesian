@@ -1,9 +1,9 @@
 #include <Arduino.h>
 
 #define X_STEP_PIN 54
-#define X_DIR_PIN 55
+#define X_DIR_PIN 55 //Pertains to direction of movement along axis
 #define X_ENABLE_PIN 38
-#define X_MIN_PIN 3
+#define X_MIN_PIN 3 //Pertains to enstop button press
 
 #define Y_STEP_PIN 60
 #define Y_DIR_PIN 61
@@ -81,6 +81,18 @@ void draw_square()
   }
 }
 
+void move_to_next_point()
+{
+  Serial.println("Moving to next point");
+  //Move to next point
+  for (int counter = 0; counter < 1000; counter++)
+  {
+    digitalWrite(X_DIR_PIN, LOW);
+    delay(1);
+    digitalWrite(X_STEP_PIN, not digitalRead(X_STEP_PIN));
+  }
+}
+
 void draw_triangle()
 {
   Serial.println("Drawing triangle");
@@ -135,18 +147,6 @@ void go_to_centre()
 
   digitalWrite(X_ENABLE_PIN, HIGH); //Disables the X axis stepper motor
   digitalWrite(Y_ENABLE_PIN, HIGH); //Disables the Y axis stepper motor
-}
-
-void move_to_next_point()
-{
-  Serial.println("Moving to next point");
-  //Move to next point
-  for (int counter = 0; counter < 1000; counter++)
-  {
-    digitalWrite(X_DIR_PIN, LOW);
-    delay(1);
-    digitalWrite(X_STEP_PIN, not digitalRead(X_STEP_PIN));
-  }
 }
 
 void setup()
