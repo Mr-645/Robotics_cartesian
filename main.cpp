@@ -170,10 +170,10 @@ void setup()
 void loop()
 {
   delay(3000);
-  go_home();
-  go_to_start_point();
-  draw_square();
-  move_to_next_point();
-  draw_triangle();
-  go_to_centre();
+  go_home();            // 1
+  go_to_start_point();  // 2
+  draw_square();        // 3
+  move_to_next_point(); // 4
+  draw_triangle();      // 5
+  go_to_centre();       // 6
 }
