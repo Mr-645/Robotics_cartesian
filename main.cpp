@@ -17,6 +17,7 @@ void go_home()
   digitalWrite(X_DIR_PIN, HIGH);
   digitalWrite(Y_DIR_PIN, LOW);
 
+  // Keep stepping the motor until the endstop button is pressed
   for (int counter = 0; digitalRead(X_MIN_PIN) == false; counter++)
   {
     delay(1);
